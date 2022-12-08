@@ -1,17 +1,23 @@
-import "./Navbar.css";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { AuthContext } from "../../context/auth.context";
+import { AuthContext } from "./../context/auth.context";
+import Logo from "../remoting-logo.png";
 
 function Navbar() {
-  // Subscribe to the AuthContext to gain access to
-  // the values from AuthContext.Provider's `value` prop
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
   return (
     <nav>
       <Link to="/">
-        <button>Home</button>
+      <button><img src={Logo} alt="logo" style={{width: 50, heigth: 50}} /></button>
+      </Link>
+
+      <Link to="/about">
+        <button>About</button>
+      </Link>
+
+      <Link to="/spaces">
+      <button>Working Spaces</button>
       </Link>
 
       {isLoggedIn && (

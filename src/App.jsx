@@ -6,42 +6,53 @@ import { useContext } from "react";
 import { AuthContext } from "./context/auth.context";
 
 
-import HomePage from "./pages/HomePage/HomePage";
-import ProfilePage from "./pages/ProfilePage/ProfilePage";
-import SignupPage from "./pages/SignupPage/SignupPage";
-import LoginPage from "./pages/LoginPage/LoginPage";
-import AboutUsPage from "./pages/AboutUsPage/AboutUsPage";
+import Home from "./pages/Home";
+import Profile from "./pages/Profile";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
+import About from "./pages/About";
+import WorkingSpaces from "./pages/WorkingSpaces";
+import Add from "./pages/Add";
 
-
-
-
-import Navbar from "./components/Navbar/Navbar";
-import IsPrivate from "./components/IsPrivate/IsPrivate";
-import IsAnon from "./components/IsAnon/IsAnon";
+import Navbar from "./components/Navbar";
+import IsPrivate from "./components/IsPrivate";
+import IsAnon from "./components/IsAnon";
 
 function App() {
+
   return (
     <div className="App">
      
       <Navbar />
 
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<Home />} />
 
         <Route
           path="/profile"
           element={
             <IsPrivate>
-              <ProfilePage />
+              <Profile />
             </IsPrivate>
           }
         />
+
+            { <Route
+            path="/spaces"
+            element= {
+              <WorkingSpaces />
+            }
+            />}
+
+        <Route 
+          path="/about" 
+        element= {<About />} />
 
         <Route
           path="/signup"
           element={
             <IsAnon>
-              <SignupPage />
+              <Signup />
             </IsAnon>
           }
         />
@@ -49,10 +60,23 @@ function App() {
           path="/login"
           element={
             <IsAnon>
-              <LoginPage />
+              <Login />
             </IsAnon>
           }
         />
+
+        {  <Route
+          path="/add"
+          element= {
+            <IsAnon>
+              <Add />
+            </IsAnon>
+          }
+          />}
+
+
+
+
       </Routes>
     </div>
   );

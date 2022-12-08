@@ -13,10 +13,8 @@ function AuthProviderWrapper(props) {
   };
 
   const authenticateUser = () => {
-    // Get the stored token from the localStorage
     const storedToken = localStorage.getItem("authToken");
 
-    // If the token exists in the localStorage
     if (storedToken) {
       // Send a request to the server using axios
       /* 
@@ -39,14 +37,11 @@ function AuthProviderWrapper(props) {
           setUser(user);
         })
         .catch((error) => {
-          // If the server sends an error response (invalid token) ❌
-          // Update state variables
           setIsLoggedIn(false);
           setIsLoading(false);
           setUser(null);
         });
     } else {
-      // If the token is not available
       setIsLoggedIn(false);
       setIsLoading(false);
       setUser(null);
@@ -58,7 +53,6 @@ function AuthProviderWrapper(props) {
   };
 
   const logOutUser = () => {
-    // Upon logout, remove the token from the localStorage
     removeToken();
     authenticateUser();
   };
