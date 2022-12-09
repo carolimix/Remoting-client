@@ -67,11 +67,9 @@ function App() {
 
         {  <Route
           path="/add"
-          element= {
-            <IsAnon>
+          element= {            
               <Add />
-            </IsAnon>
-          }
+                      }
           />}
 
 

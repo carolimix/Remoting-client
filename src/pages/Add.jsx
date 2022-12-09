@@ -1,8 +1,25 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import WorkingSpaces from "./WorkingSpaces";
 
 const Add = () => {
+    const handleFileUpload = e => {
+    // console.log("The file to be uploaded is: ", e.target.files[0]);
+ 
+    const uploadData = new FormData();
+    uploadData.append("imageUrl", e.target.files[0]);
+ 
+    service
+      .uploadImage(uploadData)
+      .then(response => {
+        // console.log("response is: ", response);
+        // response carries "secure_url" which we can use to update the state
+        setImageUrl(response.secure_url);
+      })
+      .catch(err => console.log("Error while uploading the file: ", err));
+  };
+
   const [formData, setFormData] = useState({
     name: null,
     district: null,
@@ -13,39 +30,34 @@ const Add = () => {
     imageUrl: null,
     website: null,
     extras: null,
-    petFriendly: null
+    petFriendly: null,
+    added_by: user._id,
   });
 
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios
-      .post(`${process.env.REACT_APP_SERVER_URL}/spaces/create`, formData)
-      .then((response) => {
-        console.log("alright, updated with", response, formData);
-        setFormData({});
-      });
-/* 
-      formData.append("file");
-      formData.append("upload_preset", process.env.UPLOAD_PRESET);
-      formData.append("cloud_name", "saborlatino");
+      
+              axios
+                  .post(`${process.env.REACT_APP_SERVER_URL}/spaces/create`, body)
+                  .then((response) => {
+                      console.log(
+                          "alright, updated with",
+                          response,
+                          formData
+                      );
 
-      fetch("", {
-        method: "post",
-        body: formData,
-      })
-      .then((resp) => console.log(resp))
-      .then((formData) => {
-        formData && console.log(formData.url);
-        return formData.url;
-      })
-      .then((img) => {
-        const body= { }
-      }) */
+                      setFormData({});
+                      navigate("/spaces");
+                  });
+          );
+
+      setFormData("");
   };
+  formData.image && console.log(formData.image);
 
-
+     
   return (
     <div>
   <h3>Do you know any nice Working Space and want to add to our list?</h3>
@@ -206,7 +218,7 @@ const Add = () => {
             type="file"
             name="imageUrl"
             onChange={(e) =>
-              setFormData({ ...formData, imageUrl: e.target.value })}
+              setImage(e.target.files[0])}
               value={formData.imageUrl}
             />
           </label>
