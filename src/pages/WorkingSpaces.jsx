@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import Add from './Add';
 import axios from 'axios';
+import Details from './Details';
 
 function WorkingSpaces() {
     const [data, setData] = useState([]);
@@ -25,17 +26,13 @@ console.log(data)
                   className="card"
                   style={{ width: "20rem", height: "30rem" }}
                 >
-                  <img
-                    src={space.imageUrl}
-                    className="card-img-top crdImg"
-                    alt="..."
-                  />
+                  
                   <div className="card-body">
                     <h5 className="card-title">{space.name}</h5>
                     <h5 className="card-body">{space.district}</h5>
                     <h5 className="card-body">{space.description}</h5>
                     <h5 className="card-body">{space.priceRange[0]}</h5>
-                    <p>Created By: {space.added_by}</p>
+                    <img src={space.imageUrl} alt="Image of the place" />
                   </div>
                 </div>
               </Link>

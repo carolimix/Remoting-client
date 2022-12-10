@@ -2,62 +2,48 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import WorkingSpaces from "./WorkingSpaces";
+import service from "../api/service";
 
 const Add = () => {
+  const navigate = useNavigate();
+  const [imageUrl, setImageUrl] = useState("");
+  const [formData, setFormData] = useState({
+      name: null,
+      district: null,
+      description: null,
+      type: null,
+      priceRange: null,
+      openingTimes: null,
+      imageUrl: null,
+      website: null,
+      extras: null,
+      petFriendly: null,
+    });
+
     const handleFileUpload = e => {
-    // console.log("The file to be uploaded is: ", e.target.files[0]);
- 
     const uploadData = new FormData();
     uploadData.append("imageUrl", e.target.files[0]);
  
     service
       .uploadImage(uploadData)
       .then(response => {
-        // console.log("response is: ", response);
-        // response carries "secure_url" which we can use to update the state
         setImageUrl(response.secure_url);
       })
       .catch(err => console.log("Error while uploading the file: ", err));
   };
 
-  const [formData, setFormData] = useState({
-    name: null,
-    district: null,
-    description: null,
-    type: null,
-    priceRange: null,
-    openingTimes: null,
-    imageUrl: null,
-    website: null,
-    extras: null,
-    petFriendly: null,
-    added_by: user._id,
-  });
-
-  const navigate = useNavigate();
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-      
+  const handleSubmit = e => {
+    e.preventDefault();      
               axios
-                  .post(`${process.env.REACT_APP_SERVER_URL}/spaces/create`, body)
+                  .post(`${process.env.REACT_APP_SERVER_URL}/spaces/create`, formData)
                   .then((response) => {
                       console.log(
-                          "alright, updated with",
-                          response,
-                          formData
-                      );
-
+                          "alright, updated with", response, formData);
                       setFormData({});
                       navigate("/spaces");
                   });
-          );
+                    };
 
-      setFormData("");
-  };
-  formData.image && console.log(formData.image);
-
-     
   return (
     <div>
   <h3>Do you know any nice Working Space and want to add to our list?</h3>
@@ -66,93 +52,57 @@ const Add = () => {
         <form onSubmit={handleSubmit} className="form">
           <label>
             Name:
-          <input
-            type="text"
-            name="name"
+          <input type="text" name="name"
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
             value={formData.name}
           /></label>
+          <br />
 
         <label>District:
-            <input
-            placeholder="which area?"
-            type="text"
-            name="district"
+            <input placeholder="which area?" type="text" name="district"
             onChange={(e) =>
               setFormData({ ...formData, district: e.target.value })
             }
             value={formData.district}
           />
           </label>
+          <br />
 
           <label>Description:
           <textarea
-            placeholder="breve description of the place"
-            type="text"
-            name="description"
+            placeholder="breve description of the place" type="text" name="description"
             onChange={(e) =>
               setFormData({ ...formData, description: e.target.value })
             }
             value={formData.description}
           />
           </label>
+          <br />
 
-<p> What type of place is this?</p>
-            <label>Public (libraries, etc)
-          <input
-            type="checkbox"
-            name="type"
-            onChange={(e) =>
+        <label>Type of place:            
+         <select id="type" name="type">
+          onChange={(e) =>
               setFormData({ ...formData, type: e.target.value })
             }
-            value={formData.type}
-          />
+          <option value={formData.type}> Public</option>
+          <option value={formData.type}> Private</option>
+          </select>
           </label>
+  <br />
 
-          <label>Private(cafeterias, etc)
-          <input
-            type="checkbox"
-            name="type"
-            onChange={(e) =>
+            <label>Prince Range
+          <select id="priceRange" name="priceRange">
+          onChange={(e) =>
               setFormData({ ...formData, type: e.target.value })
             }
-            value={formData.type}
-          />
+          <option value={formData.priceRange}> $</option>
+          <option value={formData.priceRange}> $$</option>
+          <option value={formData.priceRange}>$$$</option>
+          </select>
           </label>
+          <br />
 
-            <p>Prince Range</p>
-            <label>$
-          <input
-            type="checkbox"
-            name="princeRange"
-            onChange={(e) =>
-              setFormData({ ...formData, priceRange: e.target.value })
-            }
-            value={formData.priceRange}
-          />
-          </label>
-
-          <label>$$
-          <input
-            type="checkbox"
-            name="princeRange"
-            onChange={(e) =>
-              setFormData({ ...formData, priceRange: e.target.value })
-            }
-            value={formData.priceRange}
-          />
-          </label>
-
-          <label>$$$
-          <input
-            type="checkbox"
-            name="princeRange"
-            onChange={(e) =>
-              setFormData({ ...formData, priceRange: e.target.value })
-            }
-            value={formData.priceRange}
-          />
-          </label>
+          
 
 {/* <label>Opening Times 🗓️
           <input
@@ -172,36 +122,22 @@ const Add = () => {
           value={formData.website}
           />
           </label>
+<br />
 
-<p>Pet Friendly? 🐕 🐈</p>
-          <label>Yes
-            <input 
-            type="checkbox"
-            name="petFriendly"
-            onChange={(e) => setFormData({...formData, petFriendly: e.target.value})}
-          value={formData.petFriendly}
-          />            
+          <label>Pet Friendly? 🐕 🐈            
+          <select id="petFriendly" name="petFriendly">
+          onChange={(e) =>
+              setFormData({ ...formData, type: e.target.value })
+            }
+          <option value={formData.petFriendly}> Yes</option>
+          <option value={formData.petFriendly}> No</option>
+          <option value={formData.petFriendly}>I don't know</option>
+          </select>
           </label>
+        
+        <br />
 
-          <label>No💔
-            <input 
-            type="checkbox"
-            name="petFriendly"
-            onChange={(e) => setFormData({...formData, petFriendly: e.target.value})}
-          value={formData.petFriendly}
-          />            
-          </label>
-
-          <label>I dont know
-            <input 
-            type="checkbox"
-            name="petFriendly"
-            onChange={(e) => setFormData({...formData, petFriendly: e.target.value})}
-          value={formData.petFriendly}
-          />            
-          </label>
-
-<label>Extras:
+          <label>Extras:
           <textarea
             placeholder="extra info like bad wifi, too loud to work, etc."
             type="text"
@@ -213,17 +149,12 @@ const Add = () => {
           />
           </label>
 
-          <label>Image:
-            <input
-            type="file"
-            name="imageUrl"
-            onChange={(e) =>
-              setImage(e.target.files[0])}
-              value={formData.imageUrl}
-            />
-          </label>
+        <br />
+    <b>Can you share an image of the place?</b>
+            <input type="file" onChange={(e) => handleFileUpload(e)}/>
+        
 
-          <br />
+<br />
           <button type="submit">
            Submit
           </button>
