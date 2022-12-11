@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import WorkingSpaces from "./WorkingSpaces";
-import service from "../api/service";
+import service from "../services/service";
 
 const Add = () => {
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ const Add = () => {
       petFriendly: null,
     });
 
-    const handleFileUpload = e => {
+    const handleFileUpload = (e) => {
     const uploadData = new FormData();
     uploadData.append("imageUrl", e.target.files[0]);
  
@@ -42,7 +42,7 @@ const Add = () => {
                       setFormData({});
                       navigate("/spaces");
                   });
-                    };
+                                  };
 
   return (
     <div>
@@ -51,11 +51,11 @@ const Add = () => {
       <div>
         <form onSubmit={handleSubmit} className="form">
           <label>
-            Name:
+            Name:</label>
           <input type="text" name="name"
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
             value={formData.name}
-          /></label>
+          />
           <br />
 
         <label>District:
@@ -79,65 +79,67 @@ const Add = () => {
           </label>
           <br />
 
-        <label>Type of place:            
-         <select id="type" name="type">
-          onChange={(e) =>
+        <label>Type of place: </label>           
+         <select id="type" name="type" value={formData.type} onChange={(e) =>
               setFormData({ ...formData, type: e.target.value })
-            }
-          <option value={formData.type}> Public</option>
-          <option value={formData.type}> Private</option>
+            }>
+          <option value="public">Public</option>
+          <option value="private">Private</option>
           </select>
-          </label>
+      
   <br />
 
-            <label>Prince Range
-          <select id="priceRange" name="priceRange">
-          onChange={(e) =>
-              setFormData({ ...formData, type: e.target.value })
-            }
-          <option value={formData.priceRange}> $</option>
-          <option value={formData.priceRange}> $$</option>
-          <option value={formData.priceRange}>$$$</option>
+            <label>Prince Range  </label>
+          <select id="priceRange" name="priceRange" value={formData.priceRange} onChange={(e) =>
+              setFormData({ ...formData, priceRange: e.target.value })
+            }>
+          <option value="one"> $</option>
+          <option value="two"> $$</option>
+          <option value="tree">$$$</option>
           </select>
-          </label>
+        
           <br />
 
-          
+  {/* Opening Times */}      
 
-{/* <label>Opening Times 🗓️
+  <label>Opening Times 🗓️ </label>
           <input
-            type="number"
-            name="attenuation_level"
+            type="text"
+            name="openingTimes"
             onChange={(e) =>
-              setFormData({ ...formData, attenuation_level: e.target.value })
+              setFormData({ ...formData, openingTimes: e.target.value })
             }
-            value={formData.attenuation_level}
+            value={formData.openingTimes}
           />
-          </label> */}
-          <label>Website or Maps link 🌍
+
+
+
+{/* End Opening Times */}         
+
+          <label>Maps link 🌍</label>
             <input 
             type="text"
             name="website"
             onChange={(e) => setFormData({...formData, website: e.target.value})}
           value={formData.website}
           />
-          </label>
+          
 <br />
 
-          <label>Pet Friendly? 🐕 🐈            
-          <select id="petFriendly" name="petFriendly">
-          onChange={(e) =>
-              setFormData({ ...formData, type: e.target.value })
-            }
-          <option value={formData.petFriendly}> Yes</option>
-          <option value={formData.petFriendly}> No</option>
-          <option value={formData.petFriendly}>I don't know</option>
+          <label>Pet Friendly? 🐕 🐈 </label>           
+          <select id="petFriendly" name="petFriendly" value={formData.petFriendly} onChange={(e) =>
+              setFormData({ ...formData, petFriendly: e.target.value })
+            }>
+          <option value="yes"> Yes</option>
+          <option value="no"> No</option>
+          <option value="dont-know">I don't know</option>
           </select>
-          </label>
+          
+          {/* FORM SELECT FUNCIONA SOLAMENTE CUANDO SELECCIONO NO. LOS DEMAS NO FUNCIONAN */}
         
         <br />
 
-          <label>Extras:
+          <label>Extras:</label>
           <textarea
             placeholder="extra info like bad wifi, too loud to work, etc."
             type="text"
@@ -147,7 +149,7 @@ const Add = () => {
             }
             value={formData.extras}
           />
-          </label>
+          
 
         <br />
     <b>Can you share an image of the place?</b>

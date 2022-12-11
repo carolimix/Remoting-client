@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useContext } from "react";
 import { AuthContext } from "./context/auth.context";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 import Home from "./pages/Home";

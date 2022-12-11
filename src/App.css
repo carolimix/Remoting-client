@@ -1,3 +1,27 @@
 .App {
   text-align: center;
 }
+
+.homepage {
+  padding: 100px;
+}
+
+#wds {
+  padding: 100px;
+}
+
+/* #bg-doge {
+  background-image: url("https://unsplash.com/photos/-8DAN9_oi8g");
+  background-size: cover;
+  height: 600;
+  opacity: 0.4;
+
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#color-white {
+  color: #fff;
+  background-color: #000;
+} */

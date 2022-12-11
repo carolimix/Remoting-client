@@ -29,7 +29,7 @@ function Navbar() {
             {/* <img src="https://picsum.photos/id/402/200/300" style={{ width: 50, height: 50, borderRadius: 25}} alt="profile" /> */}
           </Link>
 
-          <span>{user && user.name}</span>
+          <span>Hi <b>{user && user.name}!</b> </span>
         </>
       )}
 
