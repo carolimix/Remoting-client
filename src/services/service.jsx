@@ -25,7 +25,7 @@ const uploadImage = (file) => {
   
 const createSpace = (newSpace) => {
   return service
-  .post("/spaces", newSpace)
+  .post("/spaces/create", newSpace)
   .then(res => res.data)
   .catch(errorHandler)
 };

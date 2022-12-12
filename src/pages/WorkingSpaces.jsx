@@ -26,11 +26,11 @@ function WorkingSpaces() {
                   <div className="card-body">
                   <Link to={`/spaces/${space._id}`}>
                     <h5 className="card-title">{space.name}</h5>
+                    <img className="img-card" src={space.imageUrl} alt="Image of the place" /> 
                     </Link>
-                    <h5 className="card-body">{space.openingTimes}</h5>
-                    <Link to=""><h5 className="card-body">Get directions!➤{space.website}</h5></Link>                 
-                  
-           {/*          <img src={space.imageUrl} alt="Image of the place" /> */}
+                    <h5 className="card-body">{space.type}</h5>
+                    <Link to=""><p className="card-body">{space.website}</p></Link>               
+  
                   </div>
                 </div>
         

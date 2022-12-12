@@ -6,18 +6,18 @@ import service from "../services/service";
 
 const Add = () => {
   const navigate = useNavigate();
-  const [imageUrl, setImageUrl] = useState("");
+  
   const [formData, setFormData] = useState({
       name: null,
-      district: null,
+      district: "Mitte",
       description: null,
-      type: null,
-      priceRange: null,
+      type: "Private",
+      priceRange: "$",
       openingTimes: null,
-      imageUrl: null,
+      imageUrl: undefined,
       website: null,
       extras: null,
-      petFriendly: null,
+      petFriendly: "Yes",
     });
 
     const handleFileUpload = (e) => {
@@ -27,15 +27,17 @@ const Add = () => {
     service
       .uploadImage(uploadData)
       .then(response => {
-        setImageUrl(response.secure_url);
+        console.log(response)
+        setFormData({ ...formData, imageUrl: response.secure_url });
       })
       .catch(err => console.log("Error while uploading the file: ", err));
   };
 
   const handleSubmit = e => {
-    e.preventDefault();      
-              axios
-                  .post(`${process.env.REACT_APP_SERVER_URL}/spaces/create`, formData)
+    e.preventDefault(); 
+    console.log(formData);     
+              service
+                  .createSpace(formData)
                   .then((response) => {
                       console.log(
                           "alright, updated with", response, formData);
@@ -58,15 +60,32 @@ const Add = () => {
           />
           <br />
 
-        <label>District:
-            <input placeholder="which area?" type="text" name="district"
-            onChange={(e) =>
+          <label>Bezirk </label>
+          <select id="district" name="district" value={formData.district} onChange={(e) =>
               setFormData({ ...formData, district: e.target.value })
-            }
-            value={formData.district}
-          />
-          </label>
-          <br />
+            }>
+          <option value="Mitte">Mitte</option>
+          <option value="Neukölln">Neukölln </option>
+          <option value="Friedrichshain">Friedrichshain </option>
+          <option value="Kreuzberg">Kreuzberg</option>
+          <option value="Moabit">Moabit</option>
+          <option value="Charlottenburg">Charlottenburg</option>
+          <option value="Wilmersdorf">Wilmersdorf</option>
+          <option value="Pankow">Pankow</option>
+          <option value="Lichtenberg">Lichtenberg</option>
+          <option value="Schöneberg">Schöneberg</option>
+          <option value="Treptow">Treptow</option>
+          <option value="Köpenick">Köpenick</option>
+          <option value="Steglitz">Steglitz</option>
+          <option value="Zehlendorf">Zehlendorf</option>
+          <option value="Marzahn">Marzahn</option>
+          <option value="Hellersdorf">Hellersdorf</option>
+          <option value="Reinickendorf">Reinickendorf</option>
+          <option value="Spandau">Spandau</option>  
+          <option value="Wedding">Wedding</option>
+          </select>         
+
+<br />
 
           <label>Description:
           <textarea
@@ -83,8 +102,9 @@ const Add = () => {
          <select id="type" name="type" value={formData.type} onChange={(e) =>
               setFormData({ ...formData, type: e.target.value })
             }>
-          <option value="public">Public</option>
-          <option value="private">Private</option>
+          <option value="Public">Public</option>
+          <option value="Cafeteria">Cafeteria</option>
+          <option value="Cowork">Coworking space</option>
           </select>
       
   <br />
@@ -93,9 +113,9 @@ const Add = () => {
           <select id="priceRange" name="priceRange" value={formData.priceRange} onChange={(e) =>
               setFormData({ ...formData, priceRange: e.target.value })
             }>
-          <option value="one"> $</option>
-          <option value="two"> $$</option>
-          <option value="tree">$$$</option>
+          <option value="$"> $</option>
+          <option value="$$"> $$</option>
+          <option value="$$$">$$$</option>
           </select>
         
           <br />
@@ -111,6 +131,7 @@ const Add = () => {
             }
             value={formData.openingTimes}
           />
+<br />
 
 
 
@@ -130,9 +151,9 @@ const Add = () => {
           <select id="petFriendly" name="petFriendly" value={formData.petFriendly} onChange={(e) =>
               setFormData({ ...formData, petFriendly: e.target.value })
             }>
-          <option value="yes"> Yes</option>
-          <option value="no"> No</option>
-          <option value="dont-know">I don't know</option>
+          <option value="Yes"> Yes</option>
+          <option value="No"> No</option>
+          <option value="I don't know">I don't know</option>
           </select>
           
           {/* FORM SELECT FUNCIONA SOLAMENTE CUANDO SELECCIONO NO. LOS DEMAS NO FUNCIONAN */}
