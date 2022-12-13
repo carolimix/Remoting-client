@@ -1,12 +1,5 @@
 import "./App.css";
 import { Routes, Route, Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import axios from "axios";
-import { useContext } from "react";
-import { AuthContext } from "./context/auth.context";
-import 'bootstrap/dist/css/bootstrap.min.css';
-
-
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
@@ -15,7 +8,7 @@ import About from "./pages/About";
 import WorkingSpaces from "./pages/WorkingSpaces";
 import Add from "./pages/Add";
 import Details from "./pages/Details";
-
+import Edit from "./pages/Edit";
 import Navbar from "./components/Navbar";
 import IsPrivate from "./components/IsPrivate";
 import IsAnon from "./components/IsAnon";
@@ -31,25 +24,32 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
 
+        { <Route
+        path="/spaces"
+        element= {
+          <WorkingSpaces />
+        }
+        />}
+
         <Route
-          path="/profile"
-          element={
-            <IsPrivate>
-              <Profile />
-            </IsPrivate>
+         path="/profile" 
+         element={<IsPrivate>      
+        <Profile />
+        </IsPrivate>
           }
         />
 
-            { <Route
-            path="/spaces"
-            element= {
-              <WorkingSpaces />
-            }
-            />}
+        <Route
+        path="/spaces/:spacesId"
+        element={<Details />} 
+        />
 
-          <Route
-          path="/spaces/:spacesId"
-          element={<Details />} />
+        <Route
+        path="/spaces/edit/:spacesId"
+        elemtent={<Edit />}
+        />
+
+
 
         <Route 
           path="/about" 

@@ -21,7 +21,7 @@ function WorkingSpaces() {
           data.map((space) => (
                 <div
                   className="card"
-                  style={{ width: "20rem", height: "30rem" }}
+                  style={{ width: "20rem", height: "30rem"}}
                 >                  
                   <div className="card-body">
                   <Link to={`/spaces/${space._id}`}>

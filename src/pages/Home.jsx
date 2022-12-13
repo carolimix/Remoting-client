@@ -1,7 +1,7 @@
 
 function Home() {
   return (
-    <div className="homepage" id="bg-doge" /* style={{backgroundImage:`url(${image})`}} */>
+    <div className="homepage" id="bg-doge">
       <h1 className="color-white">See what Remoting has to offer!</h1>
       <div className="row" id="wds">
                 <div className="col-sm-4 center-block about-item">                                       

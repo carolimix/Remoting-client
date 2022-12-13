@@ -67,6 +67,7 @@ const Add = () => {
           <option value="Mitte">Mitte</option>
           <option value="Neukölln">Neukölln </option>
           <option value="Friedrichshain">Friedrichshain </option>
+          <option value="Prenzaluer Berg">Prenzlauer Berg</option>          
           <option value="Kreuzberg">Kreuzberg</option>
           <option value="Moabit">Moabit</option>
           <option value="Charlottenburg">Charlottenburg</option>
