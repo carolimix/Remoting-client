@@ -45,33 +45,90 @@ function Signup() {
   };
 
   return (
-    <div className="Signup">
-      <h1>Sign Up</h1>
-
-      <form onSubmit={handleSignupSubmit}>
-        <label>Email:</label>
-        <input type="email" name="email" value={email} onChange={handleEmail} />
-
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePassword}
-        />
-
-        <label>Name:</label>
-        <input type="text" name="name" value={name} onChange={handleName} />
-
-        <button type="submit">Sign Up</button>
+    <div className="bg-red-300 mx-auto w-2/5 ">
+    <div className="mt-20 mb-20">
+      <h1 className="text-center py-4 text-xl">
+        <strong>Sign Up</strong>
+      </h1>
+      <form className="w-full max-w-sm" onSubmit={handleSignupSubmit}>
+        <div className="md:flex md:items-center mb-6">
+          <div className="md:w-1/3">
+            <label
+              className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+              for="inline-full-name"
+            >
+              Email:
+            </label>
+          </div>
+          <div className="md:w-2/3">
+            <input
+              className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+              type="email"
+              name="email"
+              value={email}
+              onChange={handleEmail}
+            />
+          </div>
+        </div>
+        <div className="md:flex md:items-center mb-6">
+          <div className="md:w-1/3">
+            <label
+              className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+              for="inline-password"
+            >
+              Password
+            </label>
+          </div>
+          <div className="md:w-2/3">
+            <input
+              className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+              type="password"
+              name="password"
+              value={password}
+              onChange={handlePassword}
+              placeholder="*********"
+            />
+          </div>
+        </div>
+        <div className="md:flex md:items-center mb-6">
+          <div className="md:w-1/3">
+            <label
+              className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+              for="inline-full-name"
+            >
+              Name:
+            </label>
+          </div>
+          <div className="md:w-2/3">
+            <input
+              className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+              type="text"
+              name="name"
+              value={name}
+              onChange={handleName}
+            />
+          </div>
+        </div>
+        <div className="md:flex lg:items-center">
+          <div className="md:w-1/3"></div>
+          <div className="items-center lg:w-1/2">
+            <button
+              type="submit"
+              className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+            >
+              Sign Up
+            </button>
+          </div>
+        </div>
       </form>
-
       {errorMessage && <p className="error-message">{errorMessage}</p>}
-
+      <div className="text-center py-2">
       <p>Already have account?</p>
-      <Link to={"/login"}> Login</Link>
+      <Link to={"/login"} className="font-extrabold"> Login</Link>
+      </div>
     </div>
-  );
+    </div>
+     );
 }
 
 export default Signup;

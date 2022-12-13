@@ -7,27 +7,27 @@ function Navbar() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
   return (
-    <nav>
-      <Link to="/">
-      <button><img src={Logo} alt="logo" style={{width: 50, heigth: 50}} /></button>
+    <nav className="p-3 bg-amber-50 opacity-50 font-extrabold flex items-center" >
+      <Link to="/" 
+    >
+      <img src={Logo} className="w-20 h-fit" alt="logo" />
       </Link>
 
       <Link to="/about">
-        <button>About</button>
+        <button  className="pl-0.5 mx-2">About</button>
       </Link>
 
       <Link to="/spaces">
-      <button>Working Spaces</button>
+      <button  className="mx-2">Working Spaces</button>
       </Link>
 
       {isLoggedIn && (
         <>
-          <button onClick={logOutUser}>Logout</button>
+          <button  className="mx-2" onClick={logOutUser}>Logout</button>
 
           <Link to="/profile">
-            <button>Profile</button>
-            {/* <img src="https://picsum.photos/id/402/200/300" style={{ width: 50, height: 50, borderRadius: 25}} alt="profile" /> */}
-          </Link>
+            <button  className="mx-2">Profile</button>
+           </Link>
 
           <span>Hi <b>{user && user.name}!</b> </span>
         </>
@@ -37,11 +37,11 @@ function Navbar() {
         <>
           <Link to="/signup">
             {" "}
-            <button>Sign Up</button>{" "}
+            <button  className="mx-2">Sign Up</button>{" "}
           </Link>
           <Link to="/login">
             {" "}
-            <button>Login</button>{" "}
+            <button className="mx-2">Login</button>{" "}
           </Link>
         </>
       )}

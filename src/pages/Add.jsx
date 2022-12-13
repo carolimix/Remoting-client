@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import WorkingSpaces from "./WorkingSpaces";
 import service from "../services/service";
+import { ReactDOM } from "react";
 
 const Add = () => {
   const navigate = useNavigate();
@@ -50,7 +51,7 @@ const Add = () => {
     <div>
   <h3>Do you know any nice Working Space and want to add to our list?</h3>
   <h2>You can do it here!</h2>
-      <div>
+      <div className="bg-grey-300">
         <form onSubmit={handleSubmit} className="form">
           <label>
             Name:</label>
@@ -179,7 +180,7 @@ const Add = () => {
         
 
 <br />
-          <button type="submit">
+          <button type="submit" onClick={() => alert('Check that every field is correct before submiting')}>
            Submit
           </button>
         </form>
