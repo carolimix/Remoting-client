@@ -4,8 +4,10 @@ import Add from "./Add";
 import axios from "axios";
 import Details from "./Details";
 import { AuthContext } from "../context/auth.context";
+import Search from "../components/Search";
 
 function WorkingSpaces() {
+  const [search, setSearch] = useState("");
   const [data, setData] = useState([]);
   const [message, setMessage] = useState(false);
   const { user } = useContext(AuthContext);
@@ -53,10 +55,23 @@ function WorkingSpaces() {
           <button> 💻 </button>
         </Link>
       </h2>
+      <Search setSearch={setSearch} search={search}/>
       <div className="container w-screen px-2 md:px-12 my-6 mx-auto">
       <div className="flex item-stretch flex-wrap -mx-1 lg:-mx-2">
         {data &&
-          data.map((space) => (
+          data
+          .filter(space=> {
+            if (!space.district) {
+                return false;
+            } else if (!space.name) {
+                return true;
+            } else {
+                return (
+                    space.name.toLowerCase().includes(search.toLowerCase()) ||
+                    space.district.toLowerCase().includes(search.toLowerCase())
+                )};
+            })
+          .map((space) => (
             <div className="my-1 mx-1 px-1 w-full md:w-1/3 lg:my-4 lg:px-4 lg:w-1/5 ">
               <div className="overflow-hidden rounded-2xl shadow-sm bg-gray-100 p-3">
                 <Link to={`/spaces/${space._id}`}>

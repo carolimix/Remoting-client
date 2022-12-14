@@ -17,9 +17,8 @@ import Footer from "./components/Footer";
 function App() {
 
   return (
-    <div className="App" id="demo-wrap" >
-      {/* <img className="bg-img" src="https://images.unsplash.com/uploads/141103282695035fa1380/95cdfeef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1130&q=80"/> */}
-         
+    <div className="App">
+              
       <Navbar />
 
       <Routes>
@@ -39,16 +38,16 @@ function App() {
         </IsPrivate>
           }
         />
+        <Route
+        path="/edit/:spacesId"
+        element={<Edit />}
+        />
 
         <Route
         path="/spaces/:spacesId"
         element={<Details />} 
         />
 
-        <Route
-        path="/spaces/edit/:spacesId"
-        elemtent={<Edit />}
-        />
 
 
 

@@ -30,6 +30,9 @@ const createSpace = (newSpace) => {
   .catch(errorHandler)
 };
 
+
+
+
 export default {
   service,
   getSpaces,

@@ -1,6 +1,8 @@
-import React, { useEffect, useState, Link } from "react";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import Edit from "./Edit";
 
 function Details() {
   const [space, setSpace] = useState({});
@@ -42,6 +44,7 @@ function Details() {
           </div>
         )}
       </div>
+     <Link to={`/edit/${space._id}`}><button>Edit</button></Link>     
     </div>
   );
 }

@@ -2,33 +2,12 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-function Search() {
-    const [search, setSearch] = useState("");
+function Search({search, setSearch}) {
     const [ data, setData] = useState("");
-
-    useEffect(() => {
-        axios
-        .get(`${process.env.REACT_APP_SERVER_URL}/spaces`)
-      .then((response) => setData(response.data));
-  }, []);
-
-    const searched = data.filter((result) => {
-        if (!result.name) {
-            return false;
-        } else if (!result.district) {
-            return true;
-        } else {
-            return (
-                result.name.toLowerCase().includes(search.toLowerCase) ||
-                result.district.toLowerCase().includes(search.toLowerCase)
-
-            )
-        }
-
-    })
+console.log(search)
 
     return (
-              <div className=" bg-gray-300 ">
+              <div  className="flex border border-purple-200 rounded">
             <h1>Search</h1>
             <input
                 placeholder="Search"

@@ -2,33 +2,29 @@ import React from 'react';
 
 function Footer() {
     return (
-        <footer className="relative px-1 pt-1 pb-1">
-        <div className="container mx-auto">
-          <div className="flex flex-wrap pt-6 text-center lg:text-left">
-            <div className="w-full px-4 lg:w-6/12">
-              <h1 variant="h4" className="mb-4" color="blue-gray">
-              Remoting
-              </h1>
-              <h2 className="font-normal text-blue-gray-500">
-                Find your Work Space.
-              </h2>
-              </div>
-            </div>
-            <hr className="my-6 border-gray-300" />
-        <div className="flex flex-wrap items-center justify-center md:justify-between">
-          <div className="mx-auto w-full px-4 text-center">
-            <h3
-              variant="small"
-              className="font-normal text-blue-gray-500"
-            >
-              Copyright © 2022 Remoting by <a href="/https://github.com/carolimix?tab=repositories">Carolina Acuña </a> 
-            </h3>
-              </div>
-              </div>
-              </div>
-              </footer>
+      
+<footer class="p-4 bg-white rounded-lg shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
+    <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2022 Remoting™ by <a target="_blank" href="https://github.com/carolimix?tab=repositories" class="hover:underline">Carolina Acuña</a>. All Rights Reserved.
+    </span>
+    <ul class="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
+        <li>
+            <a href="#about" class="mr-4 hover:underline md:mr-6 ">About</a>
+        </li>
+        <li>
+            <a href="#" class="mr-4 hover:underline md:mr-6">Privacy Policy</a>
+        </li>
+        <li>
+            <a href="#" class="mr-4 hover:underline md:mr-6">Licensing</a>
+        </li>
+        <li>
+            <a href="#" class="hover:underline">Contact</a>
+        </li>
+    </ul>
+</footer>
+
     );
 }
 
 
 export default Footer;
+

@@ -4,7 +4,7 @@ function Home() {
   return (
     <>
       <div className="relative flex h-screen content-center items-center justify-center pt-16 pb-32">
-        <div className="absolute top-0 h-full w-full bg-[url('https://images.unsplash.com/uploads/141103282695035fa1380/95cdfeef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1130&q=80')] bg-cover bg-center" />
+        <div className="absolute top-0 h-full rounded-lg w-full bg-[url('https://images.unsplash.com/uploads/141103282695035fa1380/95cdfeef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1130&q=80')] bg-cover bg-center" />
         <div className="absolute top-0 h-full w-full bg-black/25 bg-cover bg-center" />
 
         <div className="max-w-8xl container relative mx-auto">
@@ -13,7 +13,7 @@ function Home() {
               <h1 color="white" className="mb-6 font-black text-5xl">
                 Remoting.
               </h1>
-              <h2 className="opacity-90 text-2xl">
+              <h2 className="opacity-100 text-2xl">
                 Having the freedom to work remotely is a great advantage for
                 many people. A website that helps you find places to work
                 remotely can be very beneficial in a variety of ways. Instead of
@@ -66,7 +66,7 @@ function Home() {
                 <img
                   alt="Card Image"
                   src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-                  className="h-full w-full"
+                  className="h-full w-full rounded-lg"
                 />
               </header>
               <div>
