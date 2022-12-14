@@ -21,20 +21,23 @@ function WorkingSpaces() {
     const foundedSpace = data.find((space) => {
       return space._id == id;
     });
-    const requestBody = foundedSpace.likes;
-    if (requestBody.includes(user.name)) {
+    /* const requestBody = foundedSpace.likes; */
+    if (foundedSpace.likes.includes(user.name)) {
       setMessage(true);
       return;
-    } else {
-      user && foundedSpace.likes.push(user.name);
+    } else if (user) {
+      const requestBody = user.name
+      /* user && foundedSpace.likes.push(user.name); */
 
       console.log(requestBody);
       axios
         .put(`${process.env.REACT_APP_SERVER_URL}/${id}/addlike`, {
-          likes: requestBody,
+          username: requestBody,
         })
-        .then((response) => {
-          setCount(response.data.likes.length);
+        .then(() => {
+          axios
+          .get(`${process.env.REACT_APP_SERVER_URL}/spaces`)
+          .then((response) => setData(response.data));
         })
         .catch((error) => console.log(error));
     }
@@ -69,7 +72,7 @@ function WorkingSpaces() {
                   <p className="">{space.website}</p>
                 </Link>
                 <button onClick={() => handleLike(space._id)}>
-                  Like{space.likes.length}
+                ♡{space.likes.length}
                 </button>
               </div>
             </div>
