@@ -4,24 +4,23 @@ import axios from "axios";
 import service from "../services/service";
 
 function Edit() {
-    const { spacesId } = useParams();
-    const navigate = useNavigate();
-    
-    const getSpace = () => {
+  const { spacesId } = useParams();
+  const navigate = useNavigate();
+
+  const getSpace = () => {
     axios
-        .get(`${process.env.REACT_APP_SERVER_URL}/spaces/${spacesId}`)
-        .then((response) => {
+      .get(`${process.env.REACT_APP_SERVER_URL}/spaces/${spacesId}`)
+      .then((response) => {
         console.log(response);
         const oneSpace = response.data;
         setFormData(oneSpace);
-        })
-        .catch((error) => console.log(error));
-    };
+      })
+      .catch((error) => console.log(error));
+  };
 
-    useEffect(() => {
+  useEffect(() => {
     getSpace();
-    }, []);
-
+  }, []);
 
   const [formData, setFormData] = useState({
     name: null,
@@ -45,12 +44,13 @@ function Edit() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.put(`${process.env.REACT_APP_SERVER_URL}/spaces/${spacesId}`, formData)
-    .then((response) => {
-      console.log("alright, updated with", response);
-      setFormData({});
-      navigate(`/spaces/${spacesId}`);
-    });
+    axios
+      .put(`${process.env.REACT_APP_SERVER_URL}/spaces/${spacesId}`, formData)
+      .then((response) => {
+        console.log("alright, updated with", response);
+        setFormData({});
+        navigate(`/spaces/${spacesId}`);
+      });
   };
 
   return (
@@ -149,7 +149,7 @@ function Edit() {
 
           <br />
 
-          <label>Opening Times 🗓️ </label>
+          <label>Share with us the maps link 🌍 </label>
           <input
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             type="text"

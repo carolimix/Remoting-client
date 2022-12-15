@@ -3,10 +3,13 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import Edit from "./Edit";
+import { useContext } from "react";
+import { AuthContext } from "../context/auth.context";
 
 function Details() {
   const [space, setSpace] = useState({});
   const { spacesId } = useParams();
+  const { user } = useContext(AuthContext);
 
   const getSpace = () => {
     axios
@@ -15,6 +18,19 @@ function Details() {
         console.log(response);
         const oneSpace = response.data;
         setSpace(oneSpace);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const handleFav = () => {
+    const requestBody = {
+      user,
+      spaceId: spacesId,
+    };
+    axios
+      .post(`${process.env.REACT_APP_SERVER_URL}/addfavorite`, requestBody)
+      .then((response) => {
+        console.log(response);
       })
       .catch((error) => console.log(error));
   };
@@ -28,25 +44,47 @@ function Details() {
       <div className="">
         {space && (
           <div className="">
-            <img src={space.imageUrl} alt="Image of the place" className="rounded-lg" />
-            <h2>-<strong>{space.name}</strong>-</h2>
+            <img
+              src={space.imageUrl}
+              alt="Image of the place"
+              className="rounded-lg"
+            />
+            <h2>
+              -<strong>{space.name}</strong>-
+            </h2>
             <h3>📍{space.district}</h3>
             <p>{space.description}</p>
             <p>☕{space.type}</p>
-           {/*  <p>{space.priceRange}</p> */}
-            <a href={space.website} target="_blank">{space.website}</a>
+            {/*  <p>{space.priceRange}</p> */}
+            <a href={space.website} target="_blank">
+              {space.website}
+            </a>
             <div className="px-6 pt-4 pb-2">
-        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#{space.type}</span>
-        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#{space.district}</span>
-        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#petFriendly</span>
-      </div>
-            <p><i>"{space.extras}"</i></p>
+              <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                #{space.type}
+              </span>
+              <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                #{space.district}
+              </span>
+              <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                #petFriendly
+              </span>
+            </div>
+            <a href={space.openingTimes} target="_blank">
+              👉Get there!
+            </a>
+            <p>
+              <i>💬"{space.extras}"</i>
+            </p>
           </div>
         )}
       </div>
+      <button onClick={handleFav}>➕</button>
       <div className="relative h-32 w-32 pb-0">
-     <Link to={`/edit/${space._id}`}><button>Edit</button></Link>   
-     </div>  
+        <Link to={`/edit/${space._id}`}>
+          <button>Edit</button>
+        </Link>
+      </div>
     </div>
   );
 }

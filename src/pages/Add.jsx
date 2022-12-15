@@ -142,9 +142,11 @@ const Add = () => {
 
           {/* Opening Times */}
 
-          <label>Opening Times 🗓️ </label>
+          <label>Share with us the maps link 🌍 </label>
           <input
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            /*  type="time" min="08:00" max="20:00" id="appt"required
+            name="appt" */
             type="text"
             name="openingTimes"
             onChange={(e) =>
@@ -152,11 +154,12 @@ const Add = () => {
             }
             value={formData.openingTimes}
           />
+
           <br />
 
           {/* End Opening Times */}
 
-          <label>Maps link 🌍</label>
+          <label>Website </label>
           <input
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             type="text"
@@ -205,7 +208,12 @@ const Add = () => {
             type="file"
             onChange={(e) => handleFileUpload(e)}
           />
-          <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">PNG or JPG</p>
+          <p
+            class="mt-1 text-sm text-gray-500 dark:text-gray-300"
+            id="file_input_help"
+          >
+            PNG or JPG
+          </p>
 
           <br />
           <button
