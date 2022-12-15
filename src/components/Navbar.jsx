@@ -1,15 +1,15 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
-import Logo from "../remoting-logo.png";
+import Logo from "../remoting-logo (2).png";
 
 function Navbar() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
   return (
-    <nav className="p-3 bg-amber-50 opacity-50 font-extrabold flex items-center">
+    <nav className="p-3 border-double border-4 border-amber-50 bg-sky-100 font-extrabold flex">
       <Link to="/">
-        <img src={Logo} className="w-20 h-fit" alt="logo" />
+        <img src={Logo} className="w-20 pr-1" alt="logo" />
       </Link>
 
       <Link to="/about">

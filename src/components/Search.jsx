@@ -8,9 +8,9 @@ console.log(search)
 
     return (
               <div  className="flex border border-purple-200 rounded">
-            <h1>Search</h1>
+            <h2>Search by name <br/> or Bezirk</h2>
             <input
-                placeholder="Search"
+                placeholder="🔍 Search"
                 type="text"
                 value={search}
                 onChange={(e) => {

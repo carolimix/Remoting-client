@@ -24,12 +24,12 @@ function Details() {
   }, []);
 
   return (
-    <div className="bg-red-100 items-center container w-screen px-2 md:px-12 my-6 mx-auto">
-      <div className="flex item-stretch -mx-1 lg:-mx-2">
+    <div className="bg-blue-50 items-center container w-6/12 px-2 my-6">
+      <div className="">
         {space && (
-          <div className="my-1 mx-1 px-1 w-full md: w-1/3 lg:my-4 lg:px-4 lg:w-1/5">
-            <img src={space.imageUrl} alt="Image of the place" />
-            <h2>-{space.name}-</h2>
+          <div className="">
+            <img src={space.imageUrl} alt="Image of the place" className="rounded-lg" />
+            <h2>-<strong>{space.name}</strong>-</h2>
             <h3>📍{space.district}</h3>
             <p>{space.description}</p>
             <p>☕{space.type}</p>
@@ -44,7 +44,9 @@ function Details() {
           </div>
         )}
       </div>
-     <Link to={`/edit/${space._id}`}><button>Edit</button></Link>     
+      <div className="relative h-32 w-32 pb-0">
+     <Link to={`/edit/${space._id}`}><button>Edit</button></Link>   
+     </div>  
     </div>
   );
 }

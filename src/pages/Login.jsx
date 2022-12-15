@@ -44,7 +44,7 @@ function Login() {
   };
 
   return (
-    <div className="bg-red-300 mx-auto w-2/5 ">
+    <div className="bg-red-50 mx-auto w-1/4 rounded-lg">
       <div className="mt-20 mb-20">
         <h1 className="text-center py-4 text-xl">
           <strong>Login</strong>
@@ -85,7 +85,6 @@ function Login() {
                 name="password"
                 value={password}
                 onChange={handlePassword}
-                placeholder="*********"
               />
             </div>
           </div>
@@ -97,11 +96,11 @@ function Login() {
             </label>
           </div> */}
           <div className="md:flex lg:items-center">
-            <div className="md:w-1/3"></div>
+            <div className="md:w-1/2"></div>
             <div className="items-center lg:w-1/2">
               <button
                 type="submit"
-                className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                className="shadow bg-purple-200 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
               >
                 Log In
               </button>

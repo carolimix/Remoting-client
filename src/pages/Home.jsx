@@ -1,4 +1,5 @@
 import React from "react";
+import Logo from "../remoting-logo (2).png";
 
 function Home() {
   return (
@@ -10,9 +11,9 @@ function Home() {
         <div className="max-w-8xl container relative mx-auto">
           <div className="flex flex-wrap items-center">
             <div className="ml-auto mr-auto w-full px-4 text-center lg:w-8/12">
-              <h1 color="white" className="mb-6 font-black text-5xl">
-                Remoting.
-              </h1>
+              <h1 className="text-7xl">Remoting</h1>
+             {/*    <img src={Logo} className="w-30" alt="" /> */}
+          
               <h2 className="opacity-100 text-2xl">
                 Having the freedom to work remotely is a great advantage for
                 many people. A website that helps you find places to work
@@ -47,7 +48,7 @@ function Home() {
               {/*  <h1 className="h-6 w-6 text-blue-gray-900"></h1> */}
             </div>
             <h3 variant="h3" className="mb-3 font-bold" color="blue-gray">
-              Working with us is a pleasure
+              Work where is convenient for you
             </h3>
             <p className="mb-8 font-normal text-blue-gray-500">
               Don't let your uses guess by attaching tooltips and popoves to any
@@ -58,10 +59,9 @@ function Home() {
               faster. You can change the text and images and you're good to go.
               Just make sure you enable them first via JavaScript.
             </p>
-            <button variant="outlined">read more</button>
           </div>
           <div className="mx-auto mt-24 flex w-full justify-center rounded-md px-4 md:w-4/12 lg:mt-0">
-            <div className="shadow-lg shadow-gray-500/10 rounded-md">
+            <div className="shadow-lg shadow-gray-500/10 rounded-md w-30">
               <header className="relative h-56">
                 <img
                   alt="Card Image"
@@ -69,14 +69,12 @@ function Home() {
                   className="h-full w-full rounded-lg"
                 />
               </header>
-              <div>
+              <div className="h-56 text-center">
                 <h5 variant="h5" color="blue-gray" className="mb-3 font-bold">
-                  Top Notch Services
+                  Advantages
                 </h5>
                 <p className="font-normal text-blue-gray-500">
-                  The Arctic Ocean freezes every winter and much of the sea-ice
-                  then thaws every summer, and that process will continue
-                  whatever happens.
+                Working remotely can be a great option for many people. It offers the flexibility to work from anywhere, and can allow employees to work more efficiently and productively. It also saves time and money on commuting, and allows employees to balance their personal and professional lives better.
                 </p>
               </div>
             </div>
