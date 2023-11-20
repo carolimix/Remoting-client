@@ -57,8 +57,6 @@ Este proyecto está protegido por derechos de autor y es mantenido por [Carolina
 For questions or discussions, please contact [Carolina Acuña](mailto:carolina.acuna90@gmail.com).
 
 ---
-
-**Visit the [deployed Remoting application](https://remoting.netlify.app/)**
-
+The backend code for this project is available [here](https://github.com/carolimix/Remoting-server).
 
 
