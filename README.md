@@ -49,8 +49,7 @@ Thank you for considering contributing! To contribute to this project, follow th
 
 ## License
 
-Este proyecto está protegido por derechos de autor y es mantenido por [Carolina Acuña]. No se concede ninguna licencia para la reproducción, distribución o creación de trabajos derivados a menos que se otorgue expresamente una licencia por escrito por parte de [Carolina Acuña].
-
+This project is licensed under the [GNU Affero General Public License v3.0](https://www.gnu.org/licenses/agpl-3.0.en.html) - see the [LICENSE](LICENSE) file for details.
 
 ## Contact
 
